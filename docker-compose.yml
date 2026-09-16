@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    image: postgres:17
+
+    container_name: vortix-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: vortix
+      POSTGRES_USER: vortix
+      POSTGRES_PASSWORD: vortix
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - vortix_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  vortix_postgres_data:

@@ -28,6 +28,7 @@ public class BusinessServiceImpl implements BusinessService{
     }
 
     @Override
+    @Transactional
     public BusinessResponse create(CreateBusinessRequest request) {
         Business business = Business.builder()
                 .name(request.name())
@@ -38,6 +39,7 @@ public class BusinessServiceImpl implements BusinessService{
     }
 
     @Override
+    @Transactional
     public BusinessResponse update(Long id, UpdateBusinessRequest request) {
         Business business = findEntityById(id);
         business.update(

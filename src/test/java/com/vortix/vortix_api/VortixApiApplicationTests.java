@@ -1,28 +1,46 @@
 package com.vortix.vortix_api;
 
-import com.vortix.vortix_api.core.business.service.BusinessService;
-import com.vortix.vortix_api.core.business.web.request.CreateBusinessRequest;
-import com.vortix.vortix_api.core.business.web.request.UpdateBusinessRequest;
-import com.vortix.vortix_api.core.business.web.response.BusinessResponse;
+import com.vortix.vortix_api.core.user.enums.UserRole;
+import com.vortix.vortix_api.core.user.enums.UserStatus;
+import com.vortix.vortix_api.core.user.service.UserService;
+import com.vortix.vortix_api.core.user.web.request.CreateUserRequest;
+import com.vortix.vortix_api.core.user.web.response.UserResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
+@Transactional
 class VortixApiApplicationTests {
 
 	@Autowired
-	private BusinessService businessService;
+	private UserService userService;
 
 	@Test
-	void updateBusiness() {
+	void shouldCreateUserSuccessfully() {
 
-		UpdateBusinessRequest request = new UpdateBusinessRequest("Bodega Fabrizio SAC");
+		// Arrange
+		Long businessId = 1L;
 
-		BusinessResponse response = businessService.update(1L, request);
+		CreateUserRequest request = new CreateUserRequest(
+				"test.vortix3@gmail.com",
+				"Password123",
+				UserRole.SELLER
+		);
 
-		System.out.println("ID: " + response.id());
-		System.out.println("Nombre actualizado: " + response.name());
+		// Act
+		UserResponse response = userService.create(businessId, request);
+
+		// Assert
+		assertNotNull(response);
+		assertNotNull(response.id());
+		assertEquals(request.email(), response.email());
+		assertEquals(UserRole.SELLER, response.role());
+		assertEquals(UserStatus.ACTIVE, response.status());
 	}
 
 }

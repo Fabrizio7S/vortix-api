@@ -1,9 +1,9 @@
-package com.vortix.vortix_api.core.user.model.entity;
+package com.vortix.vortix_api.core.user.entity;
 
 
 import com.vortix.vortix_api.core.business.entity.Business;
-import com.vortix.vortix_api.core.user.model.enums.UserRole;
-import com.vortix.vortix_api.core.user.model.enums.UserStatus;
+import com.vortix.vortix_api.core.user.enums.UserRole;
+import com.vortix.vortix_api.core.user.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,8 +37,12 @@ public class User {
     @JoinColumn(name = "business_id", nullable = false)
     private Business business;
 
-    public void update(String email, String password){
+    public void update(String email, UserRole role){
         this.email = email;
-        this.password = password;
+        this.role = role;
+    }
+
+    public void updatePassword(String encodedPassword) {
+        this.password = encodedPassword;
     }
 }

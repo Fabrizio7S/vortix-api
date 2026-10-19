@@ -1,6 +1,6 @@
-package com.vortix.vortix_api.core.user.model.web.request;
+package com.vortix.vortix_api.core.user.web.request;
 
-import com.vortix.vortix_api.core.user.model.enums.UserRole;
+import com.vortix.vortix_api.core.user.enums.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

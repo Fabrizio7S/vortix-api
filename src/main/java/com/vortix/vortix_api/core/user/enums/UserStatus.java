@@ -1,4 +1,4 @@
-package com.vortix.vortix_api.core.user.model.enums;
+package com.vortix.vortix_api.core.user.enums;
 
 public enum UserStatus {
     ACTIVE,

@@ -1,7 +1,7 @@
-package com.vortix.vortix_api.core.user.model.component;
+package com.vortix.vortix_api.core.user.component;
 
-import com.vortix.vortix_api.core.user.model.entity.User;
-import com.vortix.vortix_api.core.user.model.web.response.UserResponse;
+import com.vortix.vortix_api.core.user.entity.User;
+import com.vortix.vortix_api.core.user.web.response.UserResponse;
 import org.springframework.stereotype.Component;
 
 @Component

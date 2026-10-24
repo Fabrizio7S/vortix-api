@@ -10,6 +10,7 @@ import com.vortix.vortix_api.core.business.web.response.BusinessResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Locale;
 
 import java.time.LocalDate;
 
@@ -30,7 +31,9 @@ public class BusinessServiceImpl implements BusinessService{
     @Override
     @Transactional
     public BusinessResponse create(CreateBusinessRequest request) {
+        String code = generateCode(request.name());
         Business business = Business.builder()
+                .code(code)
                 .name(request.name())
                 .startDate(LocalDate.now())
                 .build();
@@ -46,5 +49,20 @@ public class BusinessServiceImpl implements BusinessService{
                 request.name()
         );
         return  businessMapper.toResponse(business);
+    }
+    private String generateCode(String name) {
+        String baseCode = name.toLowerCase(Locale.ROOT)
+                .trim()
+                .replaceAll("\\s+", "-");
+
+        String code = baseCode;
+        int counter = 2;
+
+        while (businessRepository.existsByCode(code)) {
+            code = baseCode + "-" + counter;
+            counter++;
+        }
+
+        return code;
     }
 }

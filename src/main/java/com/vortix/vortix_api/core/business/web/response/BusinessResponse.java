@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public record BusinessResponse(
         Long id,
+        String code,
         String name,
         LocalDate startDate
 ) {

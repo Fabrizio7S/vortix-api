@@ -11,6 +11,7 @@ public class BusinessMapper {
         return new BusinessResponse(
                 business.getId(),
                 business.getName(),
+                business.getCode(),
                 business.getStartDate()
         );
     }

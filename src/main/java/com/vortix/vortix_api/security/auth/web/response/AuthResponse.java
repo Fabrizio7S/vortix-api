@@ -5,6 +5,6 @@ public record AuthResponse(
         String email,
         String role,
         Long businessId,
-        String businesCode
+        String businessCode
 ) {
 }

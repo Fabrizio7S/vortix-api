@@ -10,8 +10,8 @@ public class BusinessMapper {
     public BusinessResponse toResponse(Business business) {
         return new BusinessResponse(
                 business.getId(),
-                business.getName(),
                 business.getCode(),
+                business.getName(),
                 business.getStartDate()
         );
     }

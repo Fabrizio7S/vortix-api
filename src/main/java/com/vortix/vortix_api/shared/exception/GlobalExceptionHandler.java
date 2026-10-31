@@ -106,7 +106,7 @@ public class GlobalExceptionHandler {
         ErrorResponse response = ErrorResponse.builder()
                 .status(status.value())
                 .code("BAD_CREDENTIALS")
-                .message("Email or password incorrect.")
+                .message("Invalid credentials.")
                 .build();
         return ResponseEntity.status(status).body(response);
     }

@@ -1,8 +1,7 @@
-package com.vortix.vortix_api.security.auth.web;
+package com.vortix.vortix_api.security.auth;
 
 import com.vortix.vortix_api.security.config.UserPrincipal;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 

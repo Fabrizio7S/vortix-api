@@ -1,6 +1,6 @@
 package com.vortix.vortix_api.security.config;
 
-import com.vortix.vortix_api.security.auth.web.BusinessAuthenticationProvider;
+import com.vortix.vortix_api.security.auth.BusinessAuthenticationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

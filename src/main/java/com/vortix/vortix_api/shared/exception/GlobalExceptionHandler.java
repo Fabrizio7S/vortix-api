@@ -144,4 +144,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(response);
     }
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException exception) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        ErrorResponse response = ErrorResponse.builder()
+                .status(status.value())
+                .code("RESOURCE_NOT_FOUND")
+                .message("The requested resource was not found.")
+                .build();
+        return ResponseEntity.status(status).body(response);
+    }
+
 }
